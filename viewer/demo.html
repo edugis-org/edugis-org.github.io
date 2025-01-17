@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en"><head>
+    <script>
+        const loc = window.location.toString();
+        if (loc.startsWith('http://')) {
+            if (!loc.startsWith('http://localhost')) {
+                window.location = 'https://' + loc.substr(7);
+            }
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EduGIS overzicht</title>
+    <link rel="icon" href="assets/favicon.ico">
+    <style>
+    @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFVZ0b.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        /* THe browser draws the text immediately in the fallback font if the font
+        isn't loaded, then swaps it with the webfont when it eventually loads
+        See: https://developers.google.com/web/updates/2016/02/font-display
+        */
+        font-display: auto;
+    }
+    body {
+        margin: 0 0 0 10px;
+        /* This is a font-stack that tries to use the system-default sans-serifs first */
+        font-family: 'Open Sans',sans-serif,'Arial','Helvetica',"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100%;
+        padding: 0;
+    }
+    a {
+        text-decoration: none;
+        color: black;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    a:visited {
+        color: dimgray;
+    }
+    .overview {
+        position: absolute;
+        left: 0;
+        padding-left: 5px;
+        width: 20%;
+        height: 100vh;
+        overflow: auto;
+        box-sizing: border-box;
+    }
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 20%;
+        width: 80%;
+        height: 100vh;
+        border: 0;
+        padding: 0;
+        margin: 0;          
+    }
+    </style>
+</head>
+<body>
+    <div class="overview">        
+        <br><b>Simple map</b><br>
+        <a href="index.html#configurl=maps/styleonly.json" target="edugismap">NL 17th century, no data catalog, style only</a><br>
+       
+        <br><b>Service types</b><br>
+        <a href="index.html#configurl=maps/datacatalog.json" target="edugismap">Services (WMS, Geojson, MVT...)</a><br>
+
+        <br><b>EduGIS</b><br>
+        <a href="index.html#configurl=maps/layers.json" target="edugismap">EduGIS Nederland</a><br>
+        <a href="index.html#configurl=maps/layers.json&amp;helpstart=true" target="edugismap">EduGIS Nederland met help intro</a><br>
+
+        <br><b>QGIS Server</b><br>
+        <a href="index.html#configurl=maps/cbsbevolking.json" target="edugismap">CBS bevolking (qgis)</a><br>
+        <a href="index.html#configurl=maps/cbsbodemgebruik.json" target="edugismap">CBS bodemgebruik (qgis)</a><br>
+        <a href="index.html#configurl=maps/dakdelen.json" target="edugismap">Pico dakdelen (qgis)</a><br>
+
+        <br><b>Geoserver (RIVM)</b><br>
+        <a href="index.html#configurl=maps/hitteeiland.json" target="edugismap">Stedelijk hitte-eiland effect (RIVM)</a><br>
+
+        <br><b>Datasets</b><br>
+        <a href="index.html#configurl=maps/elektrawoning.json" target="edugismap">Electriciteitslevering per woning</a><br>
+        <a href="index.html#configurl=maps/bagbouwjaar.json" target="edugismap">Bouwjaar pand (BAG)</a><br>
+        <a href="index.html#configurl=maps/admingrenzen2017.json" target="edugismap">Administratieve grenzen 2017</a><br>
+
+        <br><b>Json service</b><br>
+        <a href="index.html#configurl=maps/fietstocht.json" target="edugismap">Fietstocht</a><br>
+
+        <br><b>Vector</b><br>
+        <a href="index.html#configurl=maps/vectornuts3.json" target="edugismap">Nuts 3</a><br>
+        <a href="index.html#configurl=maps/adamverkeer.json" target="edugismap">Amsterdam verkeer (service)</a><br>
+        <a href="index.html#configurl=maps/gemgeojson.json" target="edugismap">CBS Gemeenten (geojson, 2.1 MB)</a><br>
+
+        <br><b>Stijlen</b><br>
+        <a href="index.html#configurl=maps/metroparijs.json" target="edugismap">Metrolijnen Parijs</a><br>
+        <a href="index.html#configurl=maps/gsheet.json" target="edugismap">Spreadsheetkaart</a>, <a href="https://docs.google.com/spreadsheets/d/1SCzqMGqclDJAwY0YKDDzfmc35RpLJCi-w_0_SMAJHI0" target="gsheet1">sheet1</a>, <a href="https://docs.google.com/spreadsheets/d/16a8kioqvlJIKPPAMFOOnic5l4k7vIka4wrjxyWFkQAg" target="gsheet2">sheet2</a><br>
+
+        <br><b>3D</b><br>
+        <a href="index.html#configurl=maps/buildingextrusion.json" target="edugismap">3D Gebouwen</a><br>
+        <a href="index.html#configurl=maps/thematic3D.json" target="edugismap">3D Thematisch</a><br>
+        <a href="index.html#configurl=maps/fietstocht3D.json" target="edugismap">Hillshading</a><br>
+
+        <br><b>Distance and Surface</b><br>
+        <a href="index.html#configurl=maps/adamnewyork.json" target="edugismap">Afstand Amsterdam New York</a><br>
+        <a href="index.html#configurl=maps/greenland.json" target="edugismap">Compare GreenLand and Arabian Peninsula surface </a><br>
+
+        <br><b>WebGL</b><br>
+        <a href="index.html#configurl=maps/webglanimation.json" target="edugismap">Traffic Animation</a><br>
+
+        <br><b>Map Language</b><br>
+        <a href="index.html#configurl=maps/maplanguage.json" target="edugismap">Change Map Language</a><br>
+
+        <br><b>WMS GetCapabilities</b><br>
+        <a href="index.html#configurl=maps/histcaps.json" target="edugismap">Historic Maps WMS (getcaps)</a><br>
+
+        <br><b>Configuraties</b><br>
+        <a href="index.html#configurl=maps/pdok.json" target="edugismap">PDOK Viewer</a><br>
+        <a href="index.html#configurl=https://pastebin.com/raw/hWHAD9TC" target="edugismap">Een configuratie</a> op <a href="https://pastebin.com/raw/hWHAD9TC" target="edugismap">pastebin</a>&lt;<a href="https://pastebin.com/hWHAD9TC" target="pastebin">edit</a>&gt;<br>
+        <a href="index.html#configurl=https://cors.io?https://pastebin.com/raw/wbYTMvqw" target="edugismap">Eigen config</a> op <a href="https://pastebin.com/raw/wbYTMvqw" target="pastebin">Pastebin</a> via cors.io<br>
+        
+    </div>
+    <iframe name="edugismap" src="index.html" width="80%" height="100%"></iframe>
+
+</body></html>
