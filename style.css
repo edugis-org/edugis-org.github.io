@@ -16,10 +16,14 @@ header {
     padding: 10px 20px; 
     text-align: center; 
 }
-
-header img { 
+header a { 
     position: absolute; 
     left: 20px; 
+    text-decoration: none; 
+    border: none;
+}
+
+img { 
     height: auto; 
 }
 
